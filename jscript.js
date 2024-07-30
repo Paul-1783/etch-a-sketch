@@ -5,6 +5,7 @@ const button = document.querySelector(".renew");
 button.addEventListener("click", () => {
   let pickedNumber = prompt("Please enter width and height of the grid:", "");
   if (pickedNumber != null) {
+    const squareSize = 600 / pickedNumber;
     container.replaceChildren();
     for (let i = 0; i < pickedNumber; ++i) {
       const puffer = document.createElement("div");
@@ -13,6 +14,8 @@ button.addEventListener("click", () => {
       for (let i = 0; i < pickedNumber; ++i) {
         const lineBlock = document.createElement("div");
         lineBlock.classList.add("line");
+        lineBlock.style.width = `${squareSize}px`;
+        lineBlock.style.height = `${squareSize}px`;
         lineBlock.addEventListener("mouseover", () => {
           lineBlock.style.backgroundColor =
             `rgb(` +

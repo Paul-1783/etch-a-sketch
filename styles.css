@@ -14,17 +14,18 @@ body {
 .puffer {
     display: flex;
     justify-content: space-evenly;
-    height: 2em;
+    height: 4em;
     width: 100%;
 }
 
 .line {
-    width: 1.6em;
-    height: 1.6em;
+    width: 6em;
+    height: 6em;
     background-color: bisque;
     border-radius: 5%;
     border: solid;
     opacity: 1;
+    overflow: hidden;
 }
 
 .borderguard {
