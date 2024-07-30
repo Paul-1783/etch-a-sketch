@@ -1,6 +1,33 @@
+const body = document.querySelector("body");
 const container = document.querySelector(".container");
+const button = document.querySelector(".renew");
 
-for (let i = 0; i < 16; ++i) {
-  const lineBlock = document.createElement("div");
-  lineBlock.classList.add("line");
-}
+button.addEventListener("click", () => {
+  let pickedNumber = prompt("Please enter width and height of the grid:", "");
+  if (pickedNumber != null) {
+    container.replaceChildren();
+    for (let i = 0; i < pickedNumber; ++i) {
+      const puffer = document.createElement("div");
+      puffer.classList.add("puffer");
+      container.appendChild(puffer);
+      for (let i = 0; i < pickedNumber; ++i) {
+        const lineBlock = document.createElement("div");
+        lineBlock.classList.add("line");
+        lineBlock.addEventListener("mouseover", () => {
+          lineBlock.style.backgroundColor =
+            `rgb(` +
+            (Math.floor(Math.random() * 255) + 1) +
+            `,` +
+            (Math.floor(Math.random() * 255) + 1) +
+            `,` +
+            (Math.floor(Math.random() * 255) + 1) +
+            `)`;
+          const lineBlockStyles = window.getComputedStyle(lineBlock);
+          lineBlock.style["opacity"] =
+            parseFloat(lineBlockStyles.getPropertyValue("opacity")) - 0.1;
+        });
+        puffer.appendChild(lineBlock);
+      }
+    }
+  }
+});
